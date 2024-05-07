@@ -25,4 +25,9 @@ def drinks(request, drinkName):
 
 def register(request):
     form = UserForm()
+
+    if request.method == 'POST':
+        form = UserForm(request.POST)
+        if form.is_valid:
+            form.save()
     return render(request, 'register.html', {'form': form})

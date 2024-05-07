@@ -11,10 +11,11 @@ class User(models.Model):
     def __str__(self):
         return self.name + ' : ' + self.email + ' : ' + self.username
     
-class Post(models.Model):
+class Memory(models.Model):
     Title = models.CharField(max_length=50)
     content = models.TextField()
-    author = models.ForeignKey(User, on_delete=models.PROTECT, related_name='users')
+    # * Make sure to setup image part of the model
+    user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='users')
 
 
 
