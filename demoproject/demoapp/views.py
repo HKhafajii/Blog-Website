@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.http import HttpResponse
-from .forms import UserForm
+from .forms import UserForm, LoginForm, MemoryForm
 
 def homepage(request):
     # return HttpResponse("Hello, world. You're learning Django with me.")
@@ -31,3 +31,16 @@ def register(request):
         if form.is_valid:
             form.save()
     return render(request, 'register.html', {'form': form})
+
+def login(request):
+    form = LoginForm()
+
+    return render(request, 'login.html', {'form' : form})
+
+def memory(request):
+    memoryForm = MemoryForm
+    if request.method == 'POST':
+        memoryForm = MemoryForm(request.POST)
+        if memoryForm.is_valid:
+            memoryForm.save
+    return render(request, 'memoryUpload.html', {'form' : memoryForm})

@@ -15,9 +15,10 @@ class Memory(models.Model):
     Title = models.CharField(max_length=50)
     content = models.TextField()
     # * Make sure to setup image part of the model
+    image = models.ImageField(upload_to='images/', null=True, blank=True) # pillow set up by pip install pillow
     user = models.ForeignKey(User, on_delete=models.PROTECT, related_name='users')
 
 
 
-    
+#TODO: Get the image upload form to work properly on forms.py, and properly connect it into the database
 
